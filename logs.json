@@ -1,0 +1,26 @@
+[
+  {
+    "timestamp": "2026-01-05T16:25:22.653Z",
+    "source": "test",
+    "topic": "test topic",
+    "tweet": "test tweet"
+  },
+  {
+    "timestamp": "2026-01-05T16:35:03.991Z",
+    "source": "GitHub",
+    "topic": "education",
+    "tweet": "The surge in AI API relay and wrapper projects like `AIClient-2-API` is phenomenal for access. But as educators, it begs the question: are we fostering deep AI understanding, or just brilliantly efficient *consumption* of models built by others? 🤔"
+  },
+  {
+    "timestamp": "2026-01-05T16:36:06.922Z",
+    "source": "GitHub",
+    "topic": "web development",
+    "tweet": "Seeing web devs build custom relays and wrappers for commercial AI APIs to save on costs and unify access feels like we're just adding layers of bespoke complexity. Are we accelerating AI adoption, or merely externalizing the costs of vendor fragmentation onto our own dev time?"
+  },
+  {
+    "timestamp": "2026-01-05T16:43:36.730Z",
+    "source": "Reddit",
+    "topic": "web development",
+    "tweet": "That cookie banner on a page that uses zero cookies. Are we prioritizing legal compliance theater over genuinely thoughtful user privacy? Let's challenge the defaults we're given. 🤔"
+  }
+]
