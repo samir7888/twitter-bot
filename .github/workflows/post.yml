@@ -31,7 +31,4 @@ jobs:
           ACCESS_SECRET: ${{ secrets.ACCESS_SECRET }}
         run: node bot.js
 
-#  M4cgK4Z8Mv4a40ygdPwCNkONF
-#  NEdPCdsEfAI4MmkIhuDrS2zBtCT3XeqJPsGieAsuVSPyqZUKHB
-#  1594365536900902912-A41e3NW8FbdRpDmonCu1RitLsmGPo4
-#  t82qQ706KvQ45Y5wyQ8eqNwc0CLo6eILbt8vBxPXGl02Q
+
