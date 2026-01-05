@@ -1,0 +1,37 @@
+name: Post to Twitter
+
+on:
+  schedule:
+    # Runs every 2 hours
+    - cron: '0 */2 * * *'
+  workflow_dispatch: # Allows manual triggering for testing
+
+jobs:
+  post-tweet:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '18'
+          cache: 'npm'
+
+      - name: Install dependencies
+        run: npm install
+
+      - name: Run Bot
+        env:
+          API_KEY: ${{ secrets.API_KEY }}
+          API_SECRET: ${{ secrets.API_SECRET }}
+          ACCESS_TOKEN: ${{ secrets.ACCESS_TOKEN }}
+          ACCESS_SECRET: ${{ secrets.ACCESS_SECRET }}
+        run: node bot.js
+
+#  M4cgK4Z8Mv4a40ygdPwCNkONF
+#  NEdPCdsEfAI4MmkIhuDrS2zBtCT3XeqJPsGieAsuVSPyqZUKHB
+#  1594365536900902912-A41e3NW8FbdRpDmonCu1RitLsmGPo4
+#  t82qQ706KvQ45Y5wyQ8eqNwc0CLo6eILbt8vBxPXGl02Q
