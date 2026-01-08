@@ -4,7 +4,8 @@
   "description": "A simple Twitter bot to post images and text from local JSON files.",
   "main": "bot.js",
   "scripts": {
-    "task": "node src/index.js"
+    "task": "node src/index.js",
+    "bot": "node bot.js"
   },
   "dependencies": {
     "@google/generative-ai": "^0.24.1",

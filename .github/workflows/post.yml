@@ -3,7 +3,7 @@ name: Post to Twitter
 on:
   schedule:
     # Runs every 2 hours
-    - cron: '0 */3 * * *'
+    - cron: '0 */2 * * *'
   workflow_dispatch:
 
 jobs:
@@ -31,7 +31,7 @@ jobs:
           ACCESS_SECRET: ${{ secrets.ACCESS_SECRET }}
           GEMINI_API_KEY: ${{ secrets.GEMINI_API_KEY }}
           DRY_RUN: 'false'
-        run: npm run task
+        run: npm run bot
 
 
 
