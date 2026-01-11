@@ -22,5 +22,23 @@
     "source": "Reddit",
     "topic": "web development",
     "tweet": "That cookie banner on a page that uses zero cookies. Are we prioritizing legal compliance theater over genuinely thoughtful user privacy? Let's challenge the defaults we're given. 🤔"
+  },
+  {
+    "timestamp": "2026-01-11T17:45:17.101Z",
+    "source": "Reddit",
+    "topic": "Web3",
+    "tweet": "billions poured into web3, yet i'm still looking for its tailwind. are we building infrastructure or just more interesting ways to flip jpegs?"
+  },
+  {
+    "timestamp": "2026-01-11T17:45:46.232Z",
+    "source": "Reddit",
+    "topic": "B2B SaaS",
+    "tweet": "if your b2b saas takes a quarter to onboard, you're not selling software, you're selling professional services with a gui attached. but why are we okay with that?"
+  },
+  {
+    "timestamp": "2026-01-11T17:46:43.212Z",
+    "source": "Hacker News",
+    "topic": "coding memes",
+    "tweet": "my entire codebase is just 5 files and i still get an `out of memory` error. it's less building, more existential plumbing. what's your current white whale of a bug?"
   }
 ]
