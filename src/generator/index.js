@@ -28,7 +28,7 @@ async function generateTweet(trends, topic, tone) {
     2. Length: 1-2 sentences max. Keep it punchy.
     3. Directness: Jump straight to the point. No "Did you know?".
     4. Questions: Often end with an open-ended question that invites conversation (e.g., "how did you make your first $?").
-    5. Formatting: Use single line breaks if needed. 
+    5. Formatting: Use single line breaks before asking the question. 
     6. Emojis/Hashtags: Rare. Max 1 emoji. rare but can use max 1 hashtag related to topic(not always).
     7. Tone: Witty, "not a dry engineer", energetic, and authentic.
 
