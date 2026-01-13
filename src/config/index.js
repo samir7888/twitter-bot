@@ -15,7 +15,8 @@ module.exports = {
         intervalHours: { min: 2, max: 4 },
         dryRun: process.env.DRY_RUN === 'true',
     },
-    topics: ['React', 'Next.js', 'AI', 'Web3', 'B2B SaaS', 'cybersecurity', 'deep tech', 'engineering culture', 'coding memes', 'startup life'],
+    topics: ['React', 'Next.js', 'AI','web development', 'Web3', 'B2B SaaS', 'cybersecurity',
+         'deep tech', 'engineering culture', 'coding memes', 'startup life', 'education', 'motivation', 'Full stack', 'technology'],
     tones: [
         'Provocative shower thought',
         'Relatable builder struggle',
@@ -23,6 +24,12 @@ module.exports = {
         'Direct community question',
         'Witty observation',
         'Tech skepticism',
+        'Thoughtful criticism',
+        'Reality check',
+        'Balanced comparison',
+        'Mentor-style advice',
+        'humour',
+        'general questioner',
     ],
     redditSubreddits: ['reactjs', 'webdev', 'programming', 'web3', "codingmemes"],
 };
