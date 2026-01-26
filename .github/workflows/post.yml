@@ -3,7 +3,7 @@ name: Post to Twitter
 on:
   schedule:
     # Runs every 3 hours
-    - cron: '0 */3 * * *'
+    - cron: '0 */4 * * *'
   workflow_dispatch:
 
 jobs:

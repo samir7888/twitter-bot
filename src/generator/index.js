@@ -27,7 +27,7 @@ async function generateTweet(trends, topic, tone) {
     1. Lowercase: Use lowercase for the majority of the tweet. Only capitalize when absolutely necessary for emphasis or names.
     2. Length: 1-2 sentences max. Keep it punchy.
     3. Directness: Jump straight to the point. No "Did you know?".
-    4. Questions: Often end with an open-ended question that invites conversation (e.g., "how did you make your first $?").
+    4. Questions: Donot end with an open-ended question that invites conversation (e.g., "how did you make your first $?"). Just keep bold statement.
     5. Formatting: Use single line breaks before asking the question. 
     6. Emojis/Hashtags: Rare. Max 1 emoji. rare but can use max 1 hashtag related to topic(not always).
     7. Tone: Witty, "not a dry engineer", energetic, and authentic.
@@ -36,7 +36,7 @@ async function generateTweet(trends, topic, tone) {
     - Addressing AI tools directly: "ok claude, build me a..."
     - Industry hot takes: "Nvidia belongs in FAANG more than Netflix. It's actual deep tech."
     - Relatable hurdles: "I don't know what to do with my first internship stipend."
-    - Community curiosity: "how did you make your first dollar online?"
+    - Community curiosity: "I don't know what to do with my first internship stipend."
 
     Generate 1 tweet based on the topic ${topic} and tone ${tone}:
   `;
