@@ -3,7 +3,7 @@ name: Post to Twitter
 on:
   schedule:
     # Runs every 3 hours
-    - cron: '0 */4 * * *'
+    - cron: "0 */3 * * *"
   workflow_dispatch:
 
 jobs:
@@ -17,8 +17,8 @@ jobs:
       - name: Setup Node.js
         uses: actions/setup-node@v4
         with:
-          node-version: '22'
-          cache: 'npm'
+          node-version: "22"
+          cache: "npm"
 
       - name: Install dependencies
         run: npm install
@@ -30,8 +30,5 @@ jobs:
           ACCESS_TOKEN: ${{ secrets.ACCESS_TOKEN }}
           ACCESS_SECRET: ${{ secrets.ACCESS_SECRET }}
           GEMINI_API_KEY: ${{ secrets.GEMINI_API_KEY }}
-          DRY_RUN: 'false'
+          DRY_RUN: "false"
         run: npm run task
-
-
-
