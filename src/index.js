@@ -49,12 +49,16 @@ async function runTask() {
     // 4. Post
     try {
         const tweet = await postToTwitter(tweetText);
-        console.log(`Successfully handled tweet! ID: ${tweet.id}`);
+        console.log(`Successfully posted tweet! ID: ${tweet.id}`);
 
-        // 5. Log
+        // 5. Log only on successful post
         logTweet(source, topic, tweetText);
     } catch (error) {
-        console.error('Task failed.');
+        console.error('Failed to post tweet:', error.message);
+        if (error.data) {
+            console.error('Twitter API Error Details:', JSON.stringify(error.data, null, 2));
+        }
+        throw error; // Re-throw to ensure GitHub Actions shows failure
     }
 
     console.log('--- Task Completed ---');
