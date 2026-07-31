@@ -2,16 +2,27 @@ const config = require('./config');
 const { getGitHubTrends } = require('./fetchers/github');
 const { getHNTrends } = require('./fetchers/hn');
 const { getRedditTrends } = require('./fetchers/reddit');
+const { getXTechTrends } = require('./fetchers/x_tech');
+const { getProductHuntToday } = require('./fetchers/producthunt');
+const { getIndieHackerTrends } = require('./fetchers/indiehacker');
 const { generateTweet } = require('./generator');
-const { postToTwitter } = require('./poster/twitter');
 const { logTweet } = require('./utils/logger');
 const { sendEmail } = require('./utils/send');
 
 async function runTask() {
     console.log('--- Starting Content Automation Task ---');
 
-    
-    const sources = ['GitHub', 'Hacker News', 'Reddit'];
+
+    const sources = [
+        'x_tech',           // Highest priority
+        'producthunt',
+        'hackernews',
+        'github',
+        'indiehacker',
+        'reddit'
+    ];
+
+    // Select source - you could also weigh this by priority!
     const source = sources[Math.floor(Math.random() * sources.length)];
     const topic = config.topics[Math.floor(Math.random() * config.topics.length)];
     const tone = config.tones[Math.floor(Math.random() * config.tones.length)];
@@ -21,11 +32,17 @@ async function runTask() {
     // 2. Fetch trends
     let trends = [];
     try {
-        if (source === 'GitHub') {
-            trends = await getGitHubTrends();
-        } else if (source === 'Hacker News') {
+        if (source === 'x_tech') {
+            trends = await getXTechTrends();
+        } else if (source === 'producthunt') {
+            trends = await getProductHuntToday();
+        } else if (source === 'hackernews') {
             trends = await getHNTrends();
-        } else if (source === 'Reddit') {
+        } else if (source === 'github') {
+            trends = await getGitHubTrends();
+        } else if (source === 'indiehacker') {
+            trends = await getIndieHackerTrends();
+        } else if (source === 'reddit') {
             const sub = config.redditSubreddits[Math.floor(Math.random() * config.redditSubreddits.length)];
             trends = await getRedditTrends(sub);
             console.log(`Subreddit: r/${sub}`);
@@ -40,7 +57,7 @@ async function runTask() {
     }
 
     // 3. Generate Content
-    const tweetText = await generateTweet(trends,topic,tone);
+    const tweetText = await generateTweet(trends, topic, tone);
     if (!tweetText) {
         console.error('Failed to generate tweet.');
         return;
@@ -65,7 +82,7 @@ async function runTask() {
 
 
     // 5.Send email with the generated tweet
-     await sendEmail({ tweet: tweetText });
+    await sendEmail({ tweet: tweetText });
     console.log('--- Task Completed ---');
 }
 

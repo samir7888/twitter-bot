@@ -1,25 +1,33 @@
 # X Automation / Twitter Bot
 
-A small Node.js automation project that generates and/or posts social content from local files and AI prompts.
+A Node.js automation project that generates and posts high-engagement, developer-focused social content by fetching trending topics from top tech sources and using AI to craft relatable polls and tweets.
 
 ## What it does
 
-- `bot.js` selects a random JSON file from `posts/` and posts its `text` content to Twitter/X.
-- It can also upload an image if the selected post JSON includes an `image` path.
-- `src/index.js` contains a separate automation task that generates a tweet using Gemini AI and sends the result via email.
-- The repo includes a mix of content automation and Twitter posting logic.
+- `src/index.js` runs a complete content automation pipeline:
+  1. Fetches trending topics from a prioritized list of sources (X Tech/dev.to, Product Hunt, Hacker News, GitHub, Indie Hackers, Reddit).
+  2. Uses Gemini AI to generate a highly engaging, poll-style tweet based on strict language rules (simple everyday language, no jargon, relatable hooks).
+  3. Sends the generated tweet via email using Resend for review (or can be configured to post directly).
+- `bot.js` is a simpler legacy script that can select a random JSON file from `posts/` and post its `text` (and optional `image`) content to Twitter/X.
+- Automated via GitHub Actions to run every **1 hour**.
 
 ## Project structure
 
-- `bot.js` - simple Twitter posting script using `twitter-api-v2`.
+- `bot.js` - simple Twitter posting script from local JSON files.
 - `package.json` - project metadata and scripts.
 - `posts/` - JSON post definitions and optional images.
 - `src/` - automation source code.
   - `index.js` - main automation task orchestration.
-  - `config/index.js` - configuration from environment variables.
-  - `fetchers/` - trend fetchers for GitHub, Hacker News, and Reddit.
-  - `generator/` - Gemini AI prompt-based tweet generation.
-  - `poster/twitter.js` - helper to post tweets via Twitter API.
+  - `config/index.js` - configuration for topics, tones, and API keys.
+  - `fetchers/` - trend fetchers for:
+    - `x_tech.js` (Trending tech posts via dev.to)
+    - `producthunt.js` (Daily launches via RSS)
+    - `hackernews.js` (Top HN posts via Algolia)
+    - `github.js` (Trending repos)
+    - `indiehacker.js` (Builder struggles via dev.to tag)
+    - `reddit.js` (Subreddit trends via RSS)
+  - `generator/` - Gemini AI prompt-based tweet generation designed for maximum engagement.
+  - `poster/twitter.js` - helper to post tweets via Twitter API v2.
   - `utils/logger.js` - optional logging for posted tweets.
   - `utils/send.js` - email sender using Resend.
 
@@ -43,40 +51,30 @@ RESEND_API_KEY=your_resend_api_key
 DRY_RUN=true
 ```
 
-3. Add post JSON files to the `posts/` directory.
-
-Example `posts/post1.json`:
-
-```json
-{
-  "text": "This is a sample tweet from the bot.",
-  "image": "images/sample.jpg"
-}
-```
-
 ## Usage
 
-- Run the simple Twitter bot:
-
-```bash
-npm run bot
-```
-
-- Run the AI automation task:
+- Run the AI automation task (Fetches trends -> Generates tweet -> Emails/Posts):
 
 ```bash
 npm run task
 ```
 
+- Run the simple local Twitter bot (Posts from `posts/` folder):
+
+```bash
+npm run bot
+```
+
 ## Notes
 
-- `bot.js` uses local JSON files in `posts/` to choose tweet content.
-- `src/index.js` currently generates tweet text and sends it by email; the posting flow is commented out.
-- Enable `DRY_RUN=true` when testing to avoid sending real tweets.
+- The AI Generator is strictly prompted to mimic high-engagement developer accounts by creating punchy, jargon-free, poll-style posts.
+- `src/index.js` currently generates tweet text and sends it by email; the direct Twitter posting flow is commented out by default for safety.
+- The GitHub Actions workflow (`.github/workflows/post.yml`) is configured to run automatically every hour.
+- Enable `DRY_RUN=true` when testing to avoid side effects.
 
 ## Requirements
 
 - Node.js 18 or newer
-- Twitter API credentials
-- Gemini AI key (for generation via `src/generator`)
-- Resend API key (for email notifications)
+- Twitter API credentials (read/write access)
+- Gemini AI key (for generation)
+- Resend API key (for email delivery)
