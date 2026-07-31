@@ -11,35 +11,36 @@ async function runTask() {
     console.log('--- Starting Content Automation Task ---');
 
     
-    // const sources = ['GitHub', 'Hacker News', 'Reddit'];
-    // const source = sources[Math.floor(Math.random() * sources.length)];
-    // const topic = config.topics[Math.floor(Math.random() * config.topics.length)];
-    // const tone = config.tones[Math.floor(Math.random() * config.tones.length)];
+    const sources = ['GitHub', 'Hacker News', 'Reddit'];
+    const source = sources[Math.floor(Math.random() * sources.length)];
+    const topic = config.topics[Math.floor(Math.random() * config.topics.length)];
+    const tone = config.tones[Math.floor(Math.random() * config.tones.length)];
 
-    // console.log(`Source: ${source}, Topic: ${topic}, Tone: ${tone}`);
+    console.log(`Source: ${source}, Topic: ${topic}, Tone: ${tone}`);
 
-    // // 2. Fetch trends
-    // let trends = [];
-    // try {
-    //     if (source === 'GitHub') {
-    //         trends = await getGitHubTrends();
-    //     } else if (source === 'Hacker News') {
-    //         trends = await getHNTrends();
-    //     } else if (source === 'Reddit') {
-    //         const sub = config.redditSubreddits[Math.floor(Math.random() * config.redditSubreddits.length)];
-    //         trends = await getRedditTrends(sub);
-    //         console.log(`Subreddit: r/${sub}`);
-    //     }
-    // } catch (err) {
-    //     console.error('Fetching failed, using static fallback context.');
-    // }
+    // 2. Fetch trends
+    let trends = [];
+    try {
+        if (source === 'GitHub') {
+            trends = await getGitHubTrends();
+        } else if (source === 'Hacker News') {
+            trends = await getHNTrends();
+        } else if (source === 'Reddit') {
+            const sub = config.redditSubreddits[Math.floor(Math.random() * config.redditSubreddits.length)];
+            trends = await getRedditTrends(sub);
+            console.log(`Subreddit: r/${sub}`);
+        }
+        console.log(`Fetched ${trends.length} trends from ${source}.`);
+    } catch (err) {
+        console.error('Fetching failed, using static fallback context.');
+    }
 
-    // if (trends.length === 0) {
-    //     trends = [`Recent developments in ${topic}`, `Community discussions around ${topic}`];
-    // }
+    if (trends.length === 0) {
+        trends = [`Recent developments in ${topic}`, `Community discussions around ${topic}`];
+    }
 
     // 3. Generate Content
-    const tweetText = await generateTweet();
+    const tweetText = await generateTweet(trends,topic,tone);
     if (!tweetText) {
         console.error('Failed to generate tweet.');
         return;
@@ -72,5 +73,4 @@ async function runTask() {
 if (require.main === module) {
     runTask();
 }
-
 module.exports = { runTask };
