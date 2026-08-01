@@ -82,7 +82,7 @@ async function runTask() {
 
 
     // 5.Send email with the generated tweet
-    await sendEmail({ tweet: tweetText });
+    // await sendEmail({ tweet: tweetText });
     console.log('--- Task Completed ---');
 }
 
