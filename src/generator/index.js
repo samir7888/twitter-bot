@@ -40,8 +40,13 @@ Your Personality & Knowledge:
     - Industry hot takes: "Nvidia belongs in FAANG more than Netflix. It's actual deep tech."
     - Relatable hurdles: "I don't know what to do with my first internship stipend."
     - Community curiosity: "how did you make your first dollar online?"
-
-    Generate 1 tweet based on the topic ${topic} and tone ${tone}:
+- Write for replies, not likes
+- Keep it short & specific
+- Share real experience
+- End with a real question
+- Review conversations, not views
+    
+Generate 1 tweet based on the topic ${topic} and make it simple:
 `;
     try {
         const result = await model.generateContent(prompt);
