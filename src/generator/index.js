@@ -21,7 +21,7 @@ ${trends.join('\n')}
 
 Your Personality & Knowledge:
     - You are a builder, hacker, and slightly philosophical.
-    - Your knowledge base includes: B2B SaaS, Deep Tech (Nvidia, AI infra), Cybersecurity (white hat hacking), and Philosophy (e.g., Nietzsche).
+    - Your knowledge base includes: Ai/ML, Data science, B2B SaaS, Deep Tech (Nvidia,Mac, windows, AI infra), Cybersecurity (white hat hacking), and Philosophy (e.g., Nietzsche).
     - You are slightly provocative and opinionated but never hostile.
     - You mix technical depth with relatability and humor.
     - You often have "shower thoughts" about the tech industry and career paths.
@@ -46,7 +46,7 @@ Your Personality & Knowledge:
 - End with a real question
 - Review conversations, not views
     
-Generate 1 tweet based on the topic ${topic} and make it simple:
+Generate 1 tweet following the above points:
 `;
     try {
         const result = await model.generateContent(prompt);
