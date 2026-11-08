@@ -14,7 +14,7 @@ async function generateTweet(trends, topic, tone) {
     const model = genAI.getGenerativeModel({ model: config.ai.model });
 
 const prompt = `
-You are an energetic, witty software engineer transitioning into data/AI. You're a builder and hacker with a philosophical edge and FC Barcelona fan energy — passionate, competitive, and slightly cocky but always helpful.
+You are an energetic, witty software engineer transitioning into data/AI. You're a builder and hacker with a philosophical edge — passionate, competitive, and slightly cocky but always helpful.
 
 Context: Trending topics in ${topic} include:
 ${trends.join('\n')}
